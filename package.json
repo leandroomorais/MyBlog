@@ -1,0 +1,26 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "Um Blog pessoal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandroomorais/MyBlog.git"
+  },
+  "keywords": [
+    "personal",
+    "blog"
+  ],
+  "author": "Leandro Morais",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandroomorais/MyBlog/issues"
+  },
+  "homepage": "https://github.com/leandroomorais/MyBlog#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
