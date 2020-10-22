@@ -2,6 +2,9 @@
 const express = require("express");
 const app = express();
 
+//Importing the connection with database
+const connection = require("./database/database")
+
 //Importing the body-parser
 const bodyParser = require("body-parser");
 
@@ -14,6 +17,16 @@ app.use(bodyParser.json());
 
 //Seting up the static files
 app.use(express.static("public"));
+
+//Database
+connection
+    .authenticate()
+    .then(() => {
+        console.log("Conexão realizada com sucesso.");
+    })
+    .catch((erro) => {
+        console.log(erro);
+    })
 
 app.listen(8080, () => {
     console.log("Servidor rodando")

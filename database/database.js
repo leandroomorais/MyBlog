@@ -1,5 +1,3 @@
-const { Sequelize } = require("sequelize/types")
-
 //Importing sequelize
 const Sequelize = require('sequelize');
 
@@ -8,3 +6,5 @@ const connection = new Sequelize('myblog','root','',{
     host: "localhost",
     dialect: "mysql",
 })
+
+module.exports = connection;
