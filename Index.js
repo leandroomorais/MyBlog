@@ -8,6 +8,13 @@ const connection = require("./database/database")
 //Importing the body-parser
 const bodyParser = require("body-parser");
 
+//Importing CategoriesController routes
+const categoriesController = require("./categories/CategoriesController");
+
+//Importing ArticlesController routes
+const articlesController = require("./articles/ArticlesController");
+const router = require("./categories/CategoriesController");
+
 //Seting up the view engine
 app.set("view engine", "ejs");
 
@@ -24,6 +31,12 @@ connection.authenticate().then(() => {
 }).catch((erro) => {
     console.log(erro);
 });
+
+//Seting up the categories controller routes in app
+app.use("/", categoriesController);
+
+//Seting up the articles controller routes in app
+app.use("/", articlesController)
 
 app.get("/", (req, res) => {
     res.render("index");
