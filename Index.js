@@ -21,7 +21,7 @@ app.set("view engine", "ejs");
 //Seting up the body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-am
+
 //Seting up the static files
 app.use(express.static("public"));
 
