@@ -8,6 +8,10 @@ const connection = require("./database/database")
 //Importing the body-parser
 const bodyParser = require("body-parser");
 
+//Importing Models
+const Article = require("./articles/Article");
+const Category = require("./categories/Category");
+
 //Importing CategoriesController routes
 const categoriesController = require("./categories/CategoriesController");
 
