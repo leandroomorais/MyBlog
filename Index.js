@@ -54,7 +54,7 @@ app.get("/", (req, res) => {
 
     })
 
-})
+});
 
 app.get("/:slug", (req, res) => {
     var slug = req.params.slug;
@@ -73,6 +73,27 @@ app.get("/:slug", (req, res) => {
 
     }).catch(erro => {
         res.redirect("/");
+    })
+});
+
+app.get("/category/:slug", (req, res) => {
+    var slug = req.params.slug;
+    Category.findOne({
+        where: {
+            slug: slug,
+        },
+        include: [{ model: Article }]
+    }).then(category => {
+        if (category != undefined) {
+            Category.findAll().then(categories => {
+                res.render("index", { articles: category.articles, categories: categories });
+            })
+
+        } else {
+            res.redirect("/");
+        }
+    }).catch(erro => {
+        res.redirect("/")
     })
 })
 
