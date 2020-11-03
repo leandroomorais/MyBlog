@@ -8,6 +8,9 @@ const connection = require("./database/database")
 //Importing the body-parser
 const bodyParser = require("body-parser");
 
+//Importing Express Session
+const session = require("express-session");
+
 //Importing Models
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
@@ -19,8 +22,20 @@ const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/ArticlesController");
 const router = require("./categories/CategoriesController");
 
+//Importing UserController routes
+const usersController = require("./user/UserController");
+
 //Seting up the view engine
 app.set("view engine", "ejs");
+
+//Setting up the Express Session in app
+app.use(session({
+    secret: "qualquercoisa",
+    cookie: {
+        maxAge: 30000,
+
+    }
+}));
 
 //Seting up the body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,7 +55,10 @@ connection.authenticate().then(() => {
 app.use("/", categoriesController);
 
 //Seting up the articles controller routes in app
-app.use("/", articlesController)
+app.use("/", articlesController);
+
+//Seting up the users controller routes in app
+app.use("/", usersController);
 
 app.get("/", (req, res) => {
     Article.findAll({
